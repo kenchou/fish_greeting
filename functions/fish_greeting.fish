@@ -1,13 +1,17 @@
 function fish_greeting -d "What's up, fish?"
-    command -s afetch > /dev/null && afetch
+    # command -qs afetch && afetch
 
     set_color $fish_color_autosuggestion
     uname -nmsr
 
-    # TODO: `command -q -s` only works on fish 2.5+, so hold off on that for now
-    command -s uptime > /dev/null && command uptime
+    command -qs uptime && command uptime
 
-    type -q fish_logo; and fish_logo '' '' '' M ''
 
+    type -q fish_logo; and fish_logo '' '' '' '可' ''
+
+    set_color $fish_color_autosuggestion
+    # disk space usage
+    type -q ndf && ndf
     set_color normal
+
 end
